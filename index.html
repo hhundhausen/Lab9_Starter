@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
+  
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lab 9</title>
-
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "5e234673e3a84a798ba157824c0d7b95"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>   
+                        
   <style>
     button {
       margin: 3px;
@@ -100,8 +107,163 @@
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
 
-    // Start your code here
-    // You may move this JS to another file if you wish
+    // CODE starts here 
+    // START : step two 
+    /* button one */ 
+    let log = errorBtns[0]; 
+    log.addEventListener( "click", logFunction); 
+    
+    function logFunction() {
+      console.log('Console log button'); 
+    }
+
+    /* button two */ 
+    let error = errorBtns[1]; 
+    error.addEventListener("click", errorFunction); 
+    function errorFunction() {
+      console.error('Console error button'); 
+    }
+
+    /* button three */ 
+    let count = errorBtns[2]; 
+    count.addEventListener("click", countFunction); 
+    function countFunction() {
+      console.count('Console count button'); 
+    }
+
+    /* button four */ 
+    let warn = errorBtns[3]; 
+    warn.addEventListener("click", warnFunction); 
+    function warnFunction() {
+      console.count('Console warn button'); 
+    } 
+
+    /* button five */  
+    let assert = errorBtns[4]; 
+    assert.addEventListener("click", assertFunction); 
+    function assertFunction() {
+      const errorMsg = "The number does not equal 3";
+      let number = 2; 
+      console.assert(number == 3, {number, errorMsg});
+    }
+
+    /* button six */ 
+    let clear = errorBtns[5]; 
+    clear.addEventListener("click", clearFunction); 
+    function clearFunction() {
+      console.clear('Console clear button');  
+    }
+
+    /* button seven */ 
+    let dir = errorBtns[6]; 
+    dir.addEventListener("click", dirFunction); 
+    function dirFunction() { 
+      console.dir(document.head); 
+    } 
+
+    /* button eight */ 
+    let dirxml = errorBtns[7]; 
+    dirxml.addEventListener("click", dirmlFunction); 
+    function dirmlFunction() {
+      console.dirxml(document)
+    } 
+
+    /* button nine */ 
+    let groupStart = errorBtns[8]; 
+    groupStart.addEventListener("click", groupStartFunction); 
+    function groupStartFunction() {
+      console.group("group"); 
+    }
+
+    /* button ten */ 
+    let groupEnd = errorBtns[9]; 
+    groupEnd.addEventListener("click", groupEndFunction); 
+    function groupEndFunction() {
+      console.groupEnd("group end"); 
+    }  
+
+    /* button eleven */ 
+    let table = errorBtns[10]; 
+    table.addEventListener("click", tableFunction); 
+    function tableFunction() {
+      var people = [
+        {
+          first: 'Helena', 
+          last: 'Hundhausen',
+        }, 
+        {
+          first: 'Kaya', 
+          last: 'Bender', 
+        }
+      ];  
+      
+      console.table(people);
+    }  
+
+    /*button twelve */ 
+    let startTimer = errorBtns[11]; 
+    startTimer.addEventListener("click", startTimerFunction); 
+    function startTimerFunction() {
+      console.time(); 
+    } 
+
+    /* button thirteen */ 
+    let endTimer = errorBtns[12]; 
+    endTimer.addEventListener("click", endTimerFunction); 
+    function endTimerFunction() {
+      console.timeEnd(); 
+    } 
+
+    /* button fourteen */ 
+    let consoleTrace = errorBtns[13]; 
+    consoleTrace.addEventListener("click", consoleTraceFunction); 
+    function consoleTraceFunction() {
+      const first = () => { second(); };
+      const second = () => { third(); };
+      const third = () => { fourth(); };
+      const fourth = () => { console.trace(); };
+      first();
+    } 
+
+    /* button fifteen */ 
+    let globalError = errorBtns[14]; 
+    globalError.addEventListener("click", globalErrorFunction); 
+    function globalErrorFunction() {
+      // START : step three 
+      try {
+        function add(n, m) {
+          if (Math.trunc(n) != n || Math.trunc(m) != m)
+            throw new Error("Must be an integer"); 
+          return m + n; 
+        } 
+        add(3.3, 1); 
+
+      } catch(err) {
+        console.error('Error happened: ', err); 
+
+      } finally {
+        throw new Erorr('Error part2'); 
+      } 
+    } 
+
+    /* global error button */ 
+    // START : step four 
+    class MyGlobalError extends Error {
+      constructor(message) {
+        super(message); 
+        this.name = 'MyGlobalError'; 
+      }
+    } 
+
+    try {
+      throw new MyGlobalError('Throw Custom Erorr'); 
+    } catch(err) {
+      console.error('Custom error was thrown:', err); 
+    } 
+
+    // START: step five 
+    TrackJS.track('Testing TrackJS!');
+
   </script>
 </body>
 
