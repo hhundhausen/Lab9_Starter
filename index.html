@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lab 9</title>
-  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script src = "https://cdn.trackjs.com/agent/v3/latest/t.js" ></script>
   <script>
-    window.TrackJS && TrackJS.install({ 
-      token: "5e234673e3a84a798ba157824c0d7b95"
+    window.TrackJS && TrackJS.install({
+      token: "2a14bf46c41a423fb98f1112d542fbc4"
       // for more configuration options, see https://docs.trackjs.com
-    });
-  </script>   
+    }); 
+  </script>  
                         
   <style>
     button {
@@ -244,22 +244,22 @@
       } 
     } 
 
-    /* global error button */ 
+    /* custom error button */ 
     // START : step four 
-    class MyGlobalError extends Error {
+    class MyCustomError extends Error {
       constructor(message) {
         super(message); 
-        this.name = 'Global Error'; 
+        this.name = 'Custom Error'; 
       }
     } 
 
     function add(num1, num2, num3) {
-      let ans = number(num1) + number(num2); 
-      if(number(ans) != number(num3)) 
-        throw new MyGlobalError('Numbers do not add to the expected output'); 
+      let ans = Number(num1) + Number(num2); 
+      if(Number(ans) != Number(num3)) 
+        throw new MyCustomError('Numbers do not add to the expected output'); 
     }
 
-    // START: step five 
+    // START: step five global erorr handler 
     TrackJS.track('Testing TrackJS!');
 
   </script>
