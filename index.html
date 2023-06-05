@@ -237,12 +237,10 @@
           return m + n; 
         } 
         add(3.3, 1); 
-
       } catch(err) {
         console.error('Error happened: ', err); 
-
       } finally {
-        throw new Erorr('Error part2'); 
+        throw new Error('Error part2'); 
       } 
     } 
 
@@ -251,15 +249,15 @@
     class MyGlobalError extends Error {
       constructor(message) {
         super(message); 
-        this.name = 'MyGlobalError'; 
+        this.name = 'Global Error'; 
       }
     } 
 
-    try {
-      throw new MyGlobalError('Throw Custom Erorr'); 
-    } catch(err) {
-      console.error('Custom error was thrown:', err); 
-    } 
+    function add(num1, num2, num3) {
+      let ans = number(num1) + number(num2); 
+      if(number(ans) != number(num3)) 
+        throw new MyGlobalError('Numbers do not add to the expected output'); 
+    }
 
     // START: step five 
     TrackJS.track('Testing TrackJS!');
